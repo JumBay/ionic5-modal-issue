@@ -11,11 +11,16 @@ import { ModalController } from '@ionic/angular';
 
     <ion-content [fullscreen]="true">
       <ion-button (click)="openModal()">open modal</ion-button>
+      <p>Android webview: {{webviewVersion}}</p>
     </ion-content>
   `,
 })
 export class HomePage {
-  constructor(private modalController: ModalController) {}
+  webviewVersion = window.navigator.userAgent;
+
+  constructor(private modalController: ModalController) {
+    console.log(this.webviewVersion);
+  }
 
   async openModal() {
     const modal = await this.modalController.create({
